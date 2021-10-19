@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Attestation</title>
+    <style>
+        table {width: 80% ; margin: auto; margin-top: 535px ;}
+        tr {height: 200px ; }
+        td,th,caption {border :1px solid black ; }
+        td {padding-left : 5px ; padding-right : 20px ;font-size: 10px; }
+    </style>
+</head>
+
+<body>
+<header>
+    <div style="margin-left: 5em">
+        <p><span style="color: #03a9f4">IOTA CENTER</span><br>
+        Centre de formation privé<br>
+        N° d’enregistrement : 61-400-21<br>
+        Sfax le {{ "now"|date('d/m/Y') }}</p>
+    </div>
+    <img  src="http://iota-center.com/img/brand/logoLongTrWhite.png"   height="40px" style="background-color: #03a9f4;margin-top: 10px; margin-left: 18em">
+    <div style="margin: 10em auto ;text-align: center">
+        <h2 id="titre"><em>ATTESTATION DE STAGE</em></h2>
+        <div id="text" style="text-align: justify">
+            <p style="margin: 6em">Je soussignée Madame Mouna TRIKI, Gérante de <strong>IOTA CENTER</strong>,certifie par la présente
+                que <em><strong>M.(Mme) {{ user.nom }} {{ user.prenom }}</strong></em>, titulaire de la CIN numéro {{ user.cin }} a effectué un stage au sein de
+                        notre société et ce durant la période allant de {{ stage.dateDebut|date('d/m/Y') }} au {{ stage.dateFin|date('d/m/Y') }}.</p>
+            <p style="margin-left: 6em">Cette attestation est délivrée à l’intéressé, pour servir et valoir ce que de droit</p>
+        </div>
+    </div>
+</header>
+<footer>
+    <table>
+        <caption style="font-size: 10px"><p><strong>IOTA CENTER</strong> Formation continue - Accompagnement - Services</p></caption>
+        <tbody>
+        <tr><td><strong>Adresse</strong> : Route de Tunis km12 - Sfax -Tunisie</td><td><strong>Matricule fiscale n°</strong> : 000/M/A/1707134/Y</td></tr>
+        <tr><td><strong>Tel :</strong>   (+216) 55 773 650</td><td><strong>RIB :</strong> 08 209 000361 0007170 40</td></tr>
+        <tr><td><strong>E-mail :</strong>  direction@iota-center.com</td><td><strong>IBAN :</strong> TN59 0820 9000 3610 0071 7040</td></tr>
+        <tr><td><strong>Site web :</strong> www.iota-center.com</td><td><strong>Code Bic :</strong> BIATTNTTSFX</td></tr>
+        </tbody>
+    </table>
+</footer>
+</body>
+</html>
+

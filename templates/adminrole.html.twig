@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <style>
+        .container-first {
+            position: absolute;
+            top: 30%;
+            left: 5%;
+        }
+        h1{
+            font-size: 100px;
+            color: #333;
+            font-family: Abril fatface, sans-serif;
+        }
+        .container-btns{
+            position: relative;
+            top: 50px;
+        }
+        .btn-first{
+            border: 2px solid #b0bae8 ;
+            background: transparent;
+            font-size: 25px;
+            width: 220px;
+            color: #f1f1f1;
+            cursor: pointer;
+        }
+        a{
+            text-decoration:none;
+            color: #333;
+        }
+        .btn-first:hover{
+            transition: all 0.3s ease-in-out;
+            background: #b0bae8;
+            color: #333;
+        }
+        .lignes{
+            position: absolute;
+            top: 20%;
+            left: 5%;
+        }
+        .l1{
+            width: 250px;
+            height: 3px;
+            background: #333;
+            border-radius: 5px;
+        }
+        .l2{
+            width: 140px;
+            height: 3px;
+            background: #333;
+            border-radius: 5px;
+            position: relative;
+            top: 20px;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    <div class="lignes">
+        <div class="l1"></div>
+        <div class="l2"></div>
+    </div>
+    <div class="container-first">
+        <h1>Gestion :</h1>
+        <div class="container-btns">
+            <button class="btn-first b1"><a href="{{ path('offre_stage_index') }}">Offre de stage</a></button>
+            <button class="btn-first b2"><a href="{{ path('specialite_index') }}">Spécialité</a></button>
+            <button class="btn-first b3"><a href="{{ path('categorie_index') }}">Catégorie</a></button>
+            <button class="btn-first b4"><a href="{{ path('niveau_index') }}">Niveau</a></button>
+            <button class="btn-first b5"><a href="{{ path('type_index') }}">Type</a></button>
+            <button class="btn-first b6"><a href="{{ path('demande_stage') }}">Demande Stage</a></button>
+        </div>
+    </div>
+{% endblock %}
