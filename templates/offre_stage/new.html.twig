@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau Offre Stage{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Créer un nouveau offre</h1>
+
+        {{ include('offre_stage/_form.html.twig') }}
+
+
+        <a href="{{ path('offre_stage_index') }}" class="btn btn-primary mt-4">Retour à la liste</a>
+    </div>
+{% endblock %}

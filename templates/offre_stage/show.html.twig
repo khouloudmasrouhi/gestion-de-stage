@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Offres de stage{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Offre Stage</h1>
+
+        <table class="table table-striped">
+            <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ offre_stage.id }}</td>
+            </tr>
+            <tr>
+                <th>Intitule</th>
+                <td>{{ offre_stage.intitule }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ offre_stage.description | raw }}</td>
+            </tr>
+            <tr>
+                <th>Mission</th>
+                <td>{{ offre_stage.mission | raw}}</td>
+            </tr>
+            <tr>
+                <th>Duree</th>
+                <td>{{ offre_stage.duree }}</td>
+            </tr>
+            <tr>
+                <th>DateDebut</th>
+                <td>{{ offre_stage.dateDebut ? offre_stage.dateDebut|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateFin</th>
+                <td>{{ offre_stage.dateFin ? offre_stage.dateFin|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>PreRequis</th>
+                <td>{{ offre_stage.preRequis | raw}}</td>
+            </tr>
+            <tr>
+                <th>DateCreation</th>
+                <td>{{ offre_stage.dateCreation ? offre_stage.dateCreation|date('Y-m-d') : '' }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <a href="{{ path('offre_stage_index') }}" class="btn btn-secondary">Retour à la liste</a>
+
+        <a href="{{ path('offre_stage_edit', {'id': offre_stage.id}) }}" class="btn btn-warning">editer</a>
+        {{ include('offre_stage/_delete_form.html.twig') }}
+
+    </div>
+{% endblock %}

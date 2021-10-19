@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Type{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Create new Type</h1>
+
+        {{ include('type/_form.html.twig') }}
+
+        <a href="{{ path('type_index') }}" class="btn btn-primary mt-4">back to list</a>
+    </div>
+{% endblock %}

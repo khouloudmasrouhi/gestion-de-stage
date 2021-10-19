@@ -1,0 +1,45 @@
+<div  class="row">
+    {% for offreStage in offreStages %}
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a href="{{path('offreStages.show', {id: offreStage.id, slug: offreStage.slug})}}">{{ offreStage.intitule }}</a>
+                    </h5>
+                    <p class="card-text">Période de Stage: {{ offreStage.duree }} mois</p>
+                    <div class="text-primary" style="font-weight:bold;font-size: 1rem;">Publié le : {{ offreStage.dateCreation |date('d-m-Y') }} </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+    {# on crée des variables personnalisées #}
+    {% set queryParams = app.request.query.all %}
+    {% set queryString = queryParams|filter((v,k) => k != "page" and k != "ajax")|url_encode %}
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item">
+            <a class="page-link" href="?page=1&{{ queryString }}"><i class="fas fa-step-backward">&laquo;</i></a>
+        </li>
+        {% if page != 1 %}
+            <li class="page-item">
+                <a class="page-link" href="{{ (page > 1) ? '?page=' ~ (page - 1) : '' }}&{{ queryString }}"><i class="fas fa-step-right">Previous</i></a>
+            </li>
+        {% endif %}
+        {% set pages = (total / limit)|round(0 ,'ceil') %}
+        {% for item in 1..pages %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ item }}&{{ queryString }}">{{ item }}</a>
+            </li>
+        {% endfor %}
+        {% if page != pages %}
+            <li class="page-item">
+                <a class="page-link" href="{{ (page < pages) ? '?page=' ~ (page + 1) : '' }}&{{ queryString }}"><i class="fas fa-step-right">Next</i></a>
+            </li>
+        {% endif %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ pages }}&{{ queryString }}"><i class="fas fa-step-forward">&raquo;</i></a>
+        </li>
+    </ul>
+</nav>

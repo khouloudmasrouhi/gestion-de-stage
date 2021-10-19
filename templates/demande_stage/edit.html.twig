@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editer Stage {% endblock %}
+
+{% block body %}
+        <div class="container mt-4">
+                {{ form_start(form) }}
+                        {{ form_row(form.dateDebut) }}
+                        {{ form_row(form.dateFin) }}
+                        {{ form_row(form.dateAffectation) }}
+                        {{ form_row(form.validation) }}
+                        {{ form_row(form.categorie) }}
+                        <button class="btn btn-warning mt-4 ">{{ button_label|default('Sauvegarder') }}</button>
+
+                {{ form_end(form) }}
+                <a href="{{ path('demande_stage') }}" class="btn btn-secondary mt-4">Retour à la liste</a>
+
+        </div>
+{% endblock %}
+
+

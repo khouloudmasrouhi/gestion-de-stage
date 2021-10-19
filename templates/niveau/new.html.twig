@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter Niveau{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Ajouter Niveau</h1>
+
+        {{ include('niveau/_form.html.twig') }}
+
+        <a href="{{ path('niveau_index') }}" class="btn btn-primary mt-4">Retour à la liste</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}OffreStage index{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Demande Stage </h1>
+        {% for message in app.flashes('success') %}
+            <div class="class alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        <table id="datatable" class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Date Demande</th>
+                <th>Stage</th>
+                <th>Spécialité</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for demande in demande_stages %}
+                <tr>
+                    <td>{{ demande.nom }}</td>
+                    <td>{{ demande.prenom }}</td>
+                    <td>{{ demande.dateDemande|date('Y-m-d') }}</td>
+                    <td>{{ demande.offrestage.intitule }}</td>
+                    <td>{{ demande.offrestage.specialite }}</td>
+
+
+                    <td>
+                        <a href="{{ path('demandestage_show', {'id': demande.id}) }}" class="btn btn-warning ">stage</a>
+                        {# {% if demande.stage %}
+                            <a href="{{ path('showStage', {'id': demande.id}) }}" class="btn btn-warning ">Stage</a>
+
+
+                        {% endif %} #}
+                        <a href="{{ path('offreStages.show', {'id': demande.offrestage.id , slug: demande.offreStage.slug})}}" class="btn btn-primary ">Afficher</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="10">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+
+    </div>
+{% endblock %}

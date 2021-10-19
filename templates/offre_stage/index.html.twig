@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Offres de stage {% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Offres de stage</h1>
+        {% for message in app.flashes('success') %}
+            <div class="class alert alert-success">
+                {{ message }}
+
+            </div>
+        {% endfor %}
+
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Intitule</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for offre_stage in offre_stages %}
+                <tr>
+                    <td>{{ offre_stage.id }}</td>
+                    <td>{{ offre_stage.intitule }}</td>
+
+
+                    <td>
+                        <a href="{{ path('offre_stage_show', {'id': offre_stage.id}) }}" class="btn btn-primary ">voir</a>
+                        <a href="{{ path('offre_stage_edit', {'id': offre_stage.id}) }}" class="btn btn-secondary">editer</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="10">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('offre_stage_new') }}" class="btn btn-dark">Créer offre</a>
+
+
+    </div>
+{% endblock %}

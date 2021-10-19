@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Demande Stage{% endblock %}
+
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Demande Stage</h1>
+        {{ form_start(demandeForm) }}
+        {{ form_widget(demandeForm) }}
+        {{ form_end(demandeForm) }}
+    </div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+{# on crée des variables personnalisées #}
+{% set queryParams = app.request.query.all %}
+
+{% block title 'IOTA CENTER' %}
+{% block stylesheets %}
+    <style>
+        .card {
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+
+{% endblock %}
+{% block body %}
+ <div  class="container">
+     <div class="grix xs1 sm5 gutter-0 card">
+         <div class="col-xs1">
+             <h5>Spécialités</h5>
+             <form id="filters">
+                 {% for specialite in specialites %}
+                     {# on vérifie si la spécialité est dans les paramètres #}
+                     {% if queryParams is not empty and queryParams.specialites is defined %}
+                         {% set checked = (specialite.id in queryParams.specialites) ? "checked" : "" %}
+                     {% else %}
+                         {% set checked = "" %}
+                     {% endif %}
+                     <p><input type="checkbox" name="specialites[]" id="spec{{ specialite.id }}" value="{{ specialite.id }}"
+                               {{ checked }}>
+                         <label for="spec{{ specialite.id }}">{{ specialite.designation }}</label></p>
+                 {% endfor %}
+                 <input type="hidden" name="page" value="{{ page }}">
+             </form>
+         </div>
+         <div class="col-xs1 col-sm4" id="content">
+             <h2>Les Stages</h2>
+             {% include "_content.html.twig" %}
+         </div>
+     </div>
+ </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/filters.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Stagaire</h1>
+
+        <table class="table table-striped">
+            <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ demande_stage.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ demande_stage.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ demande_stage.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ demande_stage.email}}</td>
+            </tr>
+            <tr>
+                <th>CIN</th>
+                <td>{{ demande_stage.cin}}</td>
+            </tr>
+            <tr>
+                <th>Etablissement</th>
+                <td>{{ demande_stage.etablissement }}</td>
+            </tr>
+            <tr>
+                <th>Date Naissance</th>
+                <td>{{ demande_stage.dateNaissance ?demande_stage.dateNaissance|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ demande_stage.ville }}</td>
+            </tr>
+            <tr>
+                <th>Pays</th>
+                <td>{{ demande_stage.pays}}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ demande_stage.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{ demande_stage.telephone }}</td>
+            </tr>
+           {#  <tr>
+                <th>Nom Piece Jointe</th>
+                <td>{{ demande_stage.nomPieceJointe }}</td>
+            </tr> #}
+            <tr>
+                <th>Offre Stage</th>
+                <td>{{ demande_stage.offrestage }}</td>
+            </tr>
+            <tr>
+                <th>Niveau</th>
+                <td>{{ demande_stage.niveau }}</td>
+            </tr>
+            <tr>
+                <th>Spécialité</th>
+                <td>{{ demande_stage.specialite }}</td>
+            </tr>
+            {% if  demande_stage.stage %}
+                <tr>
+                    <th>Date Debut</th>
+                    <td>{{ demande_stage.stage.dateDebut ?demande_stage.stage.dateDebut|date('Y-m-d') : ''  }}</td>
+                </tr>
+                <tr>
+                    <th>Date Fin</th>
+                    <td>{{ demande_stage.stage.dateFin ?demande_stage.stage.dateFin|date('Y-m-d') : ''  }}</td>
+                </tr>
+                <tr>
+                    <th>Date Affectation</th>
+                    <td>{{ demande_stage.stage.dateAffectation ?demande_stage.stage.dateAffectation|date('Y-m-d') : '' }}</td>
+                </tr>
+                <tr>
+                    <th>Validation</th>
+                    <td>{{ demande_stage.stage.validation }}</td>
+                </tr>
+                <tr>
+                    <th>Catégorie</th>
+                    <td>{{ demande_stage.stage.categorie }}</td>
+                </tr>
+            {% endif %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('demande_stage') }}" class="btn btn-secondary">Retour à la liste</a>
+
+        {% if not demande_stage.stage  %}
+            <a href="{{ path('demandestage_stage', {'id': demande_stage.id}) }}" class="btn btn-warning">Accepter</a>
+        {% else %}
+            <a href="{{ path('satge_edit', {'id': demande_stage.stage.id}) }}" class="btn btn-warning">Editer</a>
+            {% if demande_stage.stage.validation %}
+                <a href="{{ path('attestation', {'id': demande_stage.stage.id}) }}" class="btn btn-primary">attestation</a>
+            {% endif %}
+        {% endif %}
+
+
+
+
+
+    </div>
+
+{% endblock %}
+
+

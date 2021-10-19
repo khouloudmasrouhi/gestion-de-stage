@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title offreStages.intitule %}
+{% block body %}
+  <div class="container mt-4">
+    <div class="col-md-8">
+      <div class="jumbotron">
+        <h1>{{ offreStages.intitule }}</h1>
+      </div>
+      <div class="row">
+        <h2 class="text-primary" style="font-weight: bold">Description :</h2>
+        <div class="p card-text">{{ offreStages.description | raw |nl2br}}</div>
+        <h2 class="text-primary" style="font-weight: bold">Mission :</h2>
+        <div class="p card-text">{{ offreStages.mission | raw}}</div>
+        <div class="container mt-4">
+          <h2 class="text-primary" style="font-weight: bold">Plus d'informations :</h2>
+          <table class="table table-striped">
+            <tr>
+              <td>Date Debut</td>
+              <td>{{ offreStages.dateDebut |date('d-m-Y') }}</td>
+            </tr>
+            <tr>
+              <td>Date Fin</td>
+              <td>{{ offreStages.dateFin |date('d-m-Y') }}</td>
+            </tr>
+            <tr>
+              <td>Type</td>
+              <td>{{ offreStages.type }}</td>
+            </tr>
+            <tr>
+              <td>Niveau</td>
+              <td>{% for niveau in offreStages.getNiveau %}
+                  <li>{{ niveau.designation }}</li>
+                {% endfor %}
+              </td>
+            </tr>
+            <tr>
+              <td>Spécialité</td>
+              <td>{{ offreStages.specialite }}</td>
+            </tr>
+            <tr>
+              <td>Pré Requis</td>
+              <td>{{ offreStages.preRequis | raw}}</td>
+            </tr>
+          </table>
+          <a href="{{ path('demandestage') }}"  class="btn btn-warning">Postuler</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
